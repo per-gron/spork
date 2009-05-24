@@ -7,7 +7,7 @@
         ../string/sxml-to-xml
         ../misc/exception
         ../misc/al
-        ../misc/splice
+        misc/splice
         counter)
 
 (syntax-begin
