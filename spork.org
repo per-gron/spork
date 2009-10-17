@@ -1,0 +1,44 @@
+* Short Introduction
+** Getting to know spork quickly
+*** Spork-serve 
+	This funciton takes (up to) 3 keyword arguments, a port, errors, and root.
+	- port :: obvious.  Defaults to 8080
+	- errors :: unknown
+	- root :: unknown, seems to be the root url, but doesn't actually do anything.
+   
+    This returns a piece of cutlery.
+
+	example:
+#+BEGIN_SRC scheme
+	(define c (spork-serve root: "/spork" ))
+#+END_SRC
+
+
+*** add-spork name (path-and-args) body
+	You can add pages to a piece of cutlery with the add-spork function.  
+
+	The first argument is a piece of cutlery, the second argument is a list containing the path, and the third is the body to execute.  For
+    example:
+
+#+BEGIN_SRC scheme
+(add-spork c ("one")
+  `(html
+    (head
+     (title "Hello, world!"))
+    (body
+     "This is my first web application using Spork :)")))
+
+(add-spork c ("two")
+  `(html
+    (head
+     (title "Goodbye, cruel world!"))
+    (body
+     "This is my second web application using Spork :)")))
+#+END_SRC
+
+	 After running both pieces of the example code above, you can actually see what these do, just visit:
+	 - [[http://localhost:8080/one]]
+	 - [[http://localhost:8080/two]]
+
+	 Note there are two pieces here, first the definition of the server with spork-serv and second the definition of the handlers for the
+     request with add-spork. 
