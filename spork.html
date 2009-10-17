@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+lang="en" xml:lang="en">
+<head>
+
+<title>spork</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2009-10-16 22:03:04 MDT"/>
+<meta name="author" content="Jonathan Arkell"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">spork</h1>
+
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Short Introduction </h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+<div id="outline-container-1.1" class="outline-3">
+<h3 id="sec-1.1"><span class="section-number-3">1.1</span> Getting to know spork quickly </h3>
+<div class="outline-text-3" id="text-1.1">
+
+
+</div>
+
+<div id="outline-container-1.1.1" class="outline-4">
+<h4 id="sec-1.1.1"><span class="section-number-4">1.1.1</span> Spork-serve </h4>
+<div class="outline-text-4" id="text-1.1.1">
+
+<p>This funciton takes (up to) 3 keyword arguments, a port, errors, and root.
+</p><dl>
+<dt>port</dt><dd>
+obvious.  Defaults to 8080
+</dd>
+<dt>errors</dt><dd>
+unknown
+</dd>
+<dt>root</dt><dd>
+unknown, seems to be the root url, but doesn't actually do anything.
+
+</dd>
+</dl>
+
+<p>This returns a piece of cutlery.
+</p>
+<p>
+example:
+</p>
+
+
+<pre class="src src-scheme">(<span style="color: #a020f0;">define</span> <span style="color: #0000ff;">c</span> (spork-serve root: <span style="color: #bc8f8f;">"/spork"</span> ))
+</pre>
+
+
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1.1.2" class="outline-4">
+<h4 id="sec-1.1.2"><span class="section-number-4">1.1.2</span> add-spork name (path-and-args) body </h4>
+<div class="outline-text-4" id="text-1.1.2">
+
+<p>You can add pages to a piece of cutlery with the add-spork function.  
+</p>
+<p>
+The first argument is a piece of cutlery, the second argument is a list containing the path, and the third is the body to execute.  For
+example:
+</p>
+
+
+
+<pre class="src src-scheme">(add-spork c (<span style="color: #bc8f8f;">"one"</span>)
+  `(html
+    (head
+     (title <span style="color: #bc8f8f;">"Hello, world!"</span>))
+    (body
+     <span style="color: #bc8f8f;">"This is my first web application using Spork :)"</span>)))
+
+(add-spork c (<span style="color: #bc8f8f;">"two"</span>)
+  `(html
+    (head
+     (title <span style="color: #bc8f8f;">"Goodbye, cruel world!"</span>))
+    (body
+     <span style="color: #bc8f8f;">"This is my second web application using Spork :)"</span>)))
+</pre>
+
+
+
+
+<p>
+After running both pieces of the example code above, you can actually see what these do, just visit:
+</p><ul>
+<li>
+<a href="http://localhost:8080/one">http://localhost:8080/one</a>
+</li>
+<li>
+<a href="http://localhost:8080/two">http://localhost:8080/two</a>
+
+</li>
+</ul>
+
+<p>Note there are two pieces here, first the definition of the server with spork-serv and second the definition of the handlers for the
+request with add-spork. 
+</p></div>
+</div>
+</div>
+</div>
+<div id="postamble">
+<p class="author"> Author: Jonathan Arkell
+<a href="mailto:jonnay@jonnay.net">&lt;jonnay@jonnay.net&gt;</a>
+</p>
+<p class="date"> Date: 2009-10-16 22:03:04 MDT</p>
+<p class="creator">HTML generated by org-mode 6.31 in emacs 23</p>
+</div>
+</div>
+</body>
+</html>

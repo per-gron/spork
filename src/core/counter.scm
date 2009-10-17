@@ -1,4 +1,4 @@
-(import ../srfi/13)
+(import (std srfi/13))
 
 (define (make-counter #!optional (serializer (lambda (x) x)))
   (let ((c -1))

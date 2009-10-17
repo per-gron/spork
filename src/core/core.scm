@@ -1,17 +1,17 @@
-(import ../net/http-server
-        ../net/http-session
-        ../net/uri
-        ../srfi/1
-        ../srfi/13
-        ../string/util
-        ../string/sxml-to-xml
-        ../misc/exception
-        ../misc/al
-        misc/splice
+(import (std net/http-server)
+        (std net/http-session)
+        (std net/uri)
+        (std srfi/1)
+        (std srfi/13)
+        (std string/util)
+        (std string/sxml-to-xml)
+        (std misc/exception)
+        (std misc/al)
+        splice
         counter)
 
 (syntax-begin
- (import (only: ../srfi/1 filter)))
+ (import (only: (std srfi/1) filter)))
 
 (export make-spork
         spork?
