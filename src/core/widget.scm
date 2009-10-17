@@ -1,12 +1,12 @@
 (import core
         counter
         js
-        ../net/x-www-form-urlencoded
-        ../net/http-server
-        ../srfi/1
-        ../srfi/13
-        ../misc/al
-        ../string/util)
+        (std net/x-www-form-urlencoded
+             net/http-server
+             srfi/1
+             srfi/13
+             misc/al
+             string/util))
 
 ;; Utilities
 

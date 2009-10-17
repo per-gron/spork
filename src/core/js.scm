@@ -18,13 +18,13 @@
 ;; obj->query-string doesn't get converted to a js compatible thing
 
 
-(import ../srfi/1
-        ../string/util
-        ../string/pregexp
+(import (std srfi/1
+             string/util
+             string/pregexp)
         counter)
 
 (syntax-begin
- (import ../string/util))
+ (import (std string/util)))
 
 (export with-js-environment
         js-compile
@@ -947,7 +947,7 @@
 (define-macro (js-define-utility name)
   `(js-define-utility-with-name ,name ,(string-camelize name)))
 
-(js-define-utility join)
+;; (js-define-utility join) TODO
 
 ;;(js-define-utility each)
 ;;(js-define-utility all)

@@ -1,5 +1,5 @@
 (import core
-        ../misc/u8v)
+        (std misc/u8v))
 
 (export file-spork-mimes
         file-spork)
